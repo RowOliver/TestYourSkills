@@ -8,16 +8,15 @@
 
 
 //make button clickable 
-generateBtn.addeventListener("click")
-<button onclick="click()"> Start button</button>
+var startbtn = document.getElementById ("start-button") ; //have to declare no value
+console.log(startbtn);
+startbtn.addEventListener("click", startGame)
+var timerInterval;
+var questionIndex = 0;
 
-var theTimer;
-
-function setInterval() {
-
-    theTimer = setInterval()
-}
-
+var quizSection = document.getElementById ("quiz-things");
+var welcomeSection = document.getElementById ("Welcome");
+var currentScore = 75; //put in html
 
 var quizQuestions ={
     poistion: 0,
@@ -41,16 +40,75 @@ var quizQuestions ={
                  "A very,very small error",// correct answer
                 "Google it",
 
-            ]
+            ],
                 answer: 2
 
         },
         {
             question:" "
         }       
-            
+    ]
             
 }
+
+//function to start the game 
+function startGame() {
+    console.log("yes");
+    //start the timer
+    startTimer( );
+    //hide welcome section
+    welcomeSection.classList.add("hidden");
+    quizSection.classList.remove("hidden");
+
+    //show the question 
+
+    //render the current question
+    renderQuesion( ); 
+
+}
+//end the game
+function endGame(){
+
+}
+
+//display question
+function renderQuesion(){
+    console.log(quizQuestions.list[0]);
+
+}
+
+//check answers
+function checkAnswer(){
+
+}
+
+//start timer
+function startTimer(){
+    //create interval
+    timerInterval = setInterval(function(){
+        currentScore = currentScore - 1;
+        if (currentScore == 0) {
+            endGame( );
+
+        }
+
+    },1000)
+
+
+}
+
+//stop timer
+function stopTimer(){
+
+}
+
+
+
+
+
+
+
+
 
 
 
