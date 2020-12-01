@@ -14,38 +14,73 @@ startbtn.addEventListener("click", startGame)
 var timerInterval;
 var questionIndex = 0;
 
+//things to loop through
 var quizSection = document.getElementById ("quiz-things");
 var welcomeSection = document.getElementById ("Welcome");
 var currentScore = 75; //put in html
+var timer = document.getElementById("timer");
+var timerLength = 75;
+var currentTime;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 var quizQuestions ={
     poistion: 0,
     list: [
         {
-            question: " What is an object?",    
-            choice: [
-                "A standalone enitiy",// correct answer
-                "A ball",
-                "A method",
-                "Google it",
+            question: "Who is the manager? ",    
+            choice: ["Jim",
+                     "Michael", //correct answer
+                     "Pam", 
+                    " Darryl",
+                
             ],
-                answer:0
+                answer:1
               
         },
         {
-            question:"What breaks a code in JavaScript?",
-            choices: [
-                "A very large error",
-                 "Feeding it after midnight",
-                 "A very,very small error",// correct answer
-                "Google it",
-
+            question: "Who is fire guy?",
+            choices: ["Jim", 
+                      "Roy",
+                     " Madge", 
+                      "Ryan",// correct answer
             ],
-                answer: 2
+                answer: 3
 
         },
         {
-            question:" "
+            question:"When Dwight isn't working in the paper biz, what does he do? ",
+            choices: [ "A Samurai", 
+                       "A farmer",
+                       "A volunteer sheriff",
+                       "All of the above",//correct answer 
+
+            ],
+                answer: 3
+        }, 
+        {
+            question: "Accounting has: Ocar, Keven AND ___?",
+            choices: ["The warehouse guys",
+                      "Michael",
+                      "Angela",//correct answer
+                      "Meredith", 
+
+            ],
+                answer: 2
         }       
     ]
             
@@ -55,50 +90,62 @@ var quizQuestions ={
 function startGame() {
     console.log("yes");
     //start the timer
-    startTimer( );
+    
     //hide welcome section
     welcomeSection.classList.add("hidden");
     quizSection.classList.remove("hidden");
 
+    currentTime = setInterval(startTimer, 1000);
+    timer.textContent = timerLength; 
+    
+    
+    
     //show the question 
-
-    //render the current question
-    renderQuesion( ); 
-
-}
-//end the game
-function endGame(){
+    showQuesion( ); 
 
 }
 
 //display question
-function renderQuesion(){
-    console.log(quizQuestions.list[0]);
+function showQuesion(){
+    console.log(quizQuestions.list[questionIndex]);
+    
+    
+    
+
+
+    
 
 }
 
 //check answers
 function checkAnswer(){
+    //use same logic as above- access something from current question. copy above 
 
 }
 
 //start timer
 function startTimer(){
     //create interval
-    timerInterval = setInterval(function(){
-        currentScore = currentScore - 1;
-        if (currentScore == 0) {
-            endGame( );
+    timerLength--;
 
-        }
+    timer.textContent=timerLength;
+    if (timerLength === 0){
+        endGame()
+    }
+    
 
-    },1000)
 
+    
 
 }
 
 //stop timer
 function stopTimer(){
+
+}
+
+//end the game
+function endGame(){
 
 }
 
@@ -119,9 +166,8 @@ function stopTimer(){
 
 
 // Questons:
-// What is an object? Answer: 
-// What breaks a code in JS? answer: some kind of puncuation
-// What is a variable? Answers: an empty container, a JS property, an allgrebreic term, anything that can vary
-// How long does it take to learn JavaScript? Answers: 1 month, 1 year, 10 years, when the light turns on
-// What is a string? Answer: fibrouris material, what causes a function, data respresented in text form, google it
-// What is an array? Answer: 
+// Who is the manager?Answers: Jim, Michael, Pam, Darryl 
+// Who is fire guy? Answers: Jim, Roy, Madge, Ryan 
+// When Dwight isn't working in the paper biz, what does he do? Answer: A Samurai, A farmer, A volunteer sheriff, All of the above
+// Accounting has: Ocar, Keven AND ___? Answers: The warehouse guys, Michael, Angela, Meredith 
+// Who is Big Tuna? Answers: Stanley, Creed, Jim, Andy 
